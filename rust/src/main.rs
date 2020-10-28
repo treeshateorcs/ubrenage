@@ -35,7 +35,7 @@ fn main() {
 
 fn adjust(num_words: &mut [i32; 27]) {
     let mut i = 1;
-    while i < num_words.len() {
+    while i < num_words.len() - 1 {
         num_words[i] += num_words[i - 1];
         i += 1;
     }
