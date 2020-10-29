@@ -1,5 +1,6 @@
-/target
-/zig-cache
+rust/target
+cpp/builddir
+zig/zig-cache
 **/*.rs.bk
 
 .idea
