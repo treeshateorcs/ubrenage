@@ -65,7 +65,6 @@ class ViewController: UIViewController {
             blue: .random(in: 0...1),
             alpha: 1)
         randomPhraseButton.backgroundColor = randomColor
-        randomPhraseButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0
         randomColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         randomPhraseButton.setTitleColor(UIColor(
@@ -73,6 +72,7 @@ class ViewController: UIViewController {
             green: 1.0 - green,
             blue: 1.0 - blue,
             alpha: 1), for: .normal)
+        randomPhraseButton.titleLabel?.font = UIFont.random
     }
     
     override func viewDidLoad() {
@@ -120,8 +120,12 @@ class ViewController: UIViewController {
                 numberWithinLetter += count
             }
         }
-        print(words().components(separatedBy: .newlines).count)
         return words().components(separatedBy: .newlines)[randomInt]
     }
 }
 
+extension UIFont {
+    static var random: UIFont {
+        return UIFont(name: UIFont.familyNames.randomElement()!, size: 30)!
+    }
+}
