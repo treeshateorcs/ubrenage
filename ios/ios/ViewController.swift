@@ -59,16 +59,19 @@ class ViewController: UIViewController {
         randomNoun = randomWord(at: randoml, dict: nounsDict, words: nouns)
         randomAdjective = randomWord(at: randoml, dict: adjectivesDict, words: adjectives)
         randomPhraseButton.setTitle("\(randomAdjective) \(randomNoun)", for: .normal)
-        randomPhraseButton.backgroundColor = UIColor(
+        let randomColor = UIColor(
             red: .random(in: 0...1),
             green: .random(in: 0...1),
             blue: .random(in: 0...1),
             alpha: 1)
+        randomPhraseButton.backgroundColor = randomColor
         randomPhraseButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
+        var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0
+        randomColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         randomPhraseButton.setTitleColor(UIColor(
-            red: .random(in: 0...1),
-            green: .random(in: 0...1),
-            blue: .random(in: 0...1),
+            red: 1.0 - red,
+            green: 1.0 - green,
+            blue: 1.0 - blue,
             alpha: 1), for: .normal)
     }
     
