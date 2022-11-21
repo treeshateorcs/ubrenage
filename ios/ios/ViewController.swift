@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     var nounsCount = 0, adjectivesCount = 0
     var nounsDict: OrderedDictionary<Character, Int> = [:], adjectivesDict: OrderedDictionary<Character, Int> = [:]
     let alphabet = "abcdefghijklmnopqrstuvwxyz"
-    var randoml: Character = "a"
+    var randoml: Character = "_"
     var randomNoun = "", randomAdjective = ""
     
     required init?(coder aDecoder: NSCoder) {
