@@ -11,7 +11,7 @@ pub fn main() !void {
 
     const rand_letter_number_string: []const u8 = args_iter.next() orelse rand_letter;
     for (rand_letter_number_string) |letter| {
-        if (letter < 97 or letter > 122) {
+        if (letter < 'a' or letter > 'z') {
             usage();
             std.process.exit(1);
         }
