@@ -6,7 +6,7 @@ pub fn main() !void {
     const random = std.crypto.random;
     var args_iter = std.process.args();
     _ = args_iter.next();
-    const ra = @mod(random.int(u8), 26) + 97;
+    const ra = @mod(random.int(u8), 26) + 'a';
     const rand_letter: []const u8 = &[_]u8{ra};
 
     const rand_letter_number_string: []const u8 = args_iter.next() orelse rand_letter;
@@ -22,10 +22,8 @@ pub fn main() !void {
 fn randomWordFromList(list: []const u8, letter_number: i32) []const u8 {
     const rand = std.crypto.random;
     var it = std.mem.splitAny(u8, list, "\n");
-    var count: u32 = 0;
     var alphabet_count = [_]i32{0} ** 26;
     while (it.next()) |noun| {
-        count += 1;
         if (noun.len > 0) {
             alphabet_count[noun[0] - 'a'] += 1;
         }
@@ -42,10 +40,10 @@ fn randomWordFromList(list: []const u8, letter_number: i32) []const u8 {
     random_word_number += rand_int;
     var it2 = std.mem.splitAny(u8, list, "\n");
     while (it2.next()) |noun| {
-        random_word_number -= 1;
         if (random_word_number == 0) {
             return noun;
         }
+        random_word_number -= 1;
     }
     return "";
 }
