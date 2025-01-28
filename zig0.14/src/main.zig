@@ -2,11 +2,13 @@ const std = @import("std");
 const nouns = @embedFile("nouns");
 const adjectives = @embedFile("adjectives");
 
+const alphabet_length: u8 = 26;
+
 pub fn main() !void {
     const random = std.crypto.random;
     var args_iter = std.process.args();
     _ = args_iter.next();
-    const ra = @mod(random.int(u8), 26) + 'a';
+    const ra = @mod(random.int(u8), alphabet_length) + 'a';
     const rand_letter: []const u8 = &[_]u8{ra};
 
     const rand_letter_number_string: []const u8 = args_iter.next() orelse rand_letter;
